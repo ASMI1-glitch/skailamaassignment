@@ -28,7 +28,7 @@ const Hero = () => {
     setLoading(true);
 
     try {
-      const response = await api.post("http://localhost:8000/login", { email, password });
+      const response = await api.post("/login", { email, password });
       localStorage.setItem("token", response.data.token);
       alert("Login successful!");
       setUser(response.data.user);
