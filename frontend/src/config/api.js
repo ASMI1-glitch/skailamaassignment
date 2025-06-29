@@ -1,9 +1,8 @@
-// src/api.js or wherever you keep this file
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000", // ✅ Direct URL instead of using REACT_APP_API_URL
-  withCredentials: true
+  baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true // optional: only if using cookies/sessions
 });
 
 api.interceptors.request.use((config) => {
