@@ -1,0 +1,428 @@
+.right {
+  /* border: 2px solid red; */
+  width: 99%;
+  /* height: 100vh; */
+  font-family: Roboto;
+  background: #f1f0f0;
+  padding: 55px;
+  /* margin-top: -10px; */
+  color: black;
+}
+.mainBox {
+  display: flex;
+  flex-direction: column;
+}
+.headingHome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -20px;
+  margin-bottom: -50px;
+}
+
+.groupIcon {
+  display: flex;
+  gap: 20px;
+}
+.notification {
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.addPodcast {
+  font-weight: 600;
+  font-size: 44.98px;
+  line-height: 64.25px;
+  color: #1d1929;
+}
+.dataMap {
+  display: flex;
+  /* gap: 20px; */
+  margin-top: -20px;
+  justify-content: space-between;
+}
+.divs {
+  background: #ffffff;
+  border-radius: 8.11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 350px;
+  height: 150px;
+  border-width: 0.68px;
+  margin-bottom: 20px;
+}
+.icons {
+  width: 70px;
+  height: 70px;
+  border-radius: 16.71px;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  width: 210.35px;
+  height: 102px;
+}
+.heading {
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 45.9px;
+  letter-spacing: 0.23px;
+  margin-bottom: -25px;
+}
+.subheading {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26.67px;
+  letter-spacing: 0.18px;
+  color: #646464;
+}
+.uploadingData {
+  width: 100%;
+  height: 420px;
+  background: #ffffff;
+  border-radius: 22px;
+  border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cloudPhoto {
+  width: 128px;
+  height: 128px;
+}
+.para1 {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 25px;
+  margin-top: -10px;
+}
+.para2 {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28.13px;
+  text-align: center;
+  color: #00000066;
+  margin-top: -10px;
+}
+.selectFile {
+  width: 200px;
+  height: 65px;
+  border-radius: 192.5px;
+  border-width: 1.93px;
+  gap: 15px;
+  border: 1.93px solid #7e22ce;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 26.95px;
+  /* line-height: 38.5px; */
+  letter-spacing: 0.19px;
+  display: flex;
+  align-items: center;
+  color: #7e22ce;
+  cursor: pointer;
+  background: transparent;
+}
+.modalContainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+.modalContent {
+  width: 1257px;
+  background: #ffffff;
+  border-radius: 19.41px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.iconHeader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.youtube {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.headerHeading {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 56.85px;
+  letter-spacing: 0%;
+  color: #3c3c3c;
+}
+.formInput {
+  display: flex;
+  flex-direction: column;
+}
+.uploadDiv {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  text-align: center;
+}
+.uploadButton {
+  width: 150px;
+  height: 50px;
+  border-radius: 7.51px;
+  background: #211935;
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 26.95px;
+  line-height: 31.58px;
+  letter-spacing: 0%;
+  color: #f8f8f8;
+  display: flex;
+  align-items: center;
+}
+.inputTag {
+  width: 100%;
+  height: 70.55px;
+  border-radius: 7.06px;
+  border-width: 0.88px;
+  background: transparent;
+  color: black;
+  padding-left: 20px;
+}
+.inputTextarea {
+  color: black;
+  padding-left: 20px;
+  padding-top: 10px;
+  width: 100%;
+  height: 173.55px;
+  border-radius: 7.06px;
+  border-width: 0.88px;
+  background: transparent;
+}
+.name {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 26.46px;
+  line-height: 31.01px;
+  letter-spacing: 0%;
+  color: #3c3c3c;
+  margin-bottom: 5px;
+}
+.cross {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.homeIcon {
+  width: 24px;
+  height: 24px;
+}
+.headingHomeSample {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 25.7px;
+  line-height: 36.72px;
+  letter-spacing: 0.18px;
+  color: #999999;
+}
+.headingHomeSpan {
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 36.72px;
+  letter-spacing: 0.18px;
+  color: #7e22ce;
+}
+@media (max-width: 1400px){
+  .right {
+    overflow-x: hidden; /* ❌ no horizontal scroll */
+    overflow-y: auto;   /* ✅ vertical scroll allowed */
+  }
+  .dataMap {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .divs{
+    width: 80%;
+  }
+}
+@media (max-width: 1200px) {
+  .right {
+    padding: 30px;
+  }
+
+  .mainBox {
+    width: 100%;
+  }
+
+  .dataMap {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .divs {
+    width: 90%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .icons {
+    width: 50px;
+    height: 50px;
+  }
+  .details {
+    display: flex;
+  }
+  .heading {
+    font-size: 25px;
+  }
+  .subheading {
+    font-size: 15px;
+  }
+
+  .uploadingData {
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cloudPhoto {
+    width: 100px;
+    height: 100px;
+  }
+
+  .para1,
+  .para2 {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .selectFile {
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .modalContent {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .headerHeading {
+    font-size: 36px;
+  }
+
+  .inputTag,
+  .inputTextarea {
+    height: 50px;
+    font-size: 18px;
+  }
+
+  .uploadButton {
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .right {
+    padding: 20px;
+  }
+
+  .dataMap {
+    display: flex;
+    align-items: center;
+  }
+
+  .divs {
+    display: flex;
+    width: 80%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .uploadingData {
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cloudPhoto {
+    width: 80px;
+    height: 80px;
+  }
+
+  .para1,
+  .para2 {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .selectFile {
+    width: 180px;
+    height: 50px;
+    font-size: 18px;
+  }
+
+  .modalContent {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .headerHeading {
+    font-size: 28px;
+  }
+
+  .inputTag,
+  .inputTextarea {
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .uploadButton {
+    width: 130px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .groupIcon {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,571 @@
+.container {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 101.33px;
+  margin-top: 60px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  margin-right: 144px;
+  gap: 2px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+}
+
+.mainImg {
+  width: 300px;
+  height: 200px;
+}
+
+.add {
+  width: 30px;
+  height: 30px;
+  background: black;
+  border-radius: 50%;
+  border: transparent;
+}
+
+.heading {
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 70.62px;
+  letter-spacing: 0%;
+  color: #7e22ce;
+}
+
+.lorem {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26.94px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #838383;
+}
+
+.details {
+  width: 1113.97px;
+  height: 623.94px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+.createProject{
+  font-size: 20px;
+}
+.buttonTagProject{
+  width: 250px;
+  height: 50px;
+}
+.buttonTag {
+  width: 350px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-weight: 600;
+  font-size: 28px;
+  border-radius: 7.89px;
+  border: transparent;
+  background: #211935;
+  color: #f8f8f8;
+  cursor: pointer;
+
+}
+.create {
+  font-size: 22px;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1000;
+  color: black;
+}
+
+.modalHeading {
+  font-weight: 600;
+}
+
+.modalLabel {
+  color: grey;
+}
+
+.modalCancel {
+  background: transparent;
+}
+
+.inputModal {
+  background: transparent;
+  color: black;
+}
+
+.modalContent {
+  border-radius: 33px;
+  background: white;
+  padding: 20px;
+  width: 1300px;
+  height: 460px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modalContent input {
+  width: 90%;
+  height: 40px;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modalContent button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.modalContent button:first-child {
+  color: red;
+}
+
+.modalContent button:last-child {
+  background: #6a1b9a;
+  color: white;
+}
+
+.modalContent h1 {
+  font-size: 40px;
+  text-align: start;
+  margin-left: 50px;
+}
+
+.modalContent label {
+  display: flex;
+  margin-left: 52px;
+  font-size: 20px;
+  margin-top: -10px;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: end;
+  margin-right: 45px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+  text-align: left;
+  margin-left: 52px;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+  text-align: left;
+  margin-left: 52px;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.createButton {
+  position: relative;
+}
+
+.createButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.createButton .loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.projectCard {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.projectCard h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.projectCard p {
+  font-size: 18px;
+  color: #555;
+}
+.projectsHeading{
+  font-size: 10px;
+}
+
+.projectCountCard {
+  color: black;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.projectCountCard h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.projectCountCard p {
+  font-size: 18px;
+  color: #555;
+}
+
+.projectsSection {
+  width: 1113.97px;
+  height: 623.94px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  margin: auto;
+  cursor: pointer;
+}
+
+.projectsHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.projectsHeader h1 {
+  font-size: 48px;
+  color: #7e22ce;
+  display: flex;
+}
+
+.projectsHeader button {
+  width: 376px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 21.3px;
+  letter-spacing: 0%;
+  border-radius: 7.89px;
+  border: transparent;
+  background: #211935;
+  color: #f8f8f8;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 10px;
+  }
+
+  .mainImg {
+    width: 350px;
+    height: 350px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-evenly;
+    /* align-items: flex-start; */
+  }
+
+  .icons {
+    margin-right: 0;
+    margin-top: 10px;
+  }
+
+  .details,
+  .projectsSection {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .buttonTag {
+    width: 50%;
+    height: 60px;
+    font-size: 24px;
+  }
+
+  .modalContent {
+    width: 90%;
+    height: auto;
+    padding: 30px;
+  }
+
+  .modalContent input {
+    width: 80%;
+  }
+
+  .modalContent button {
+    width: 45%;
+  }
+  /* .buttonDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid red;
+  } */
+  .createButton{
+    width: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 5px;
+    width: 100%;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .icons {
+    margin-right: 0;
+    margin-top: 10px;
+  }
+
+  .details,
+  .projectsSection {
+    width: 95%;
+    margin: 10px auto;
+  }
+
+  .mainImg {
+    width: 350px;
+    height: 350px;
+  }
+  .heading {
+    font-size: 40px;
+  }
+
+  .create{
+    font-size: 20px;
+  }
+
+  .buttonTag {
+    width: 50%;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .modalOverlay {
+    padding: 10px;
+  }
+
+  .modalContent {
+    width: 95%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .modalContent input {
+    width: 80%;
+  }
+
+  .modalContent button {
+    width: 45%;
+    font-size: 16px;
+  }
+
+  .modalContent h1 {
+    font-size: 30px;
+    margin-left: 20px;
+  }
+
+  .modalContent label {
+    margin-left: 20px;
+    font-size: 18px;
+  }
+
+  .buttonDiv {
+    margin-right: 20px;
+  }
+
+  .error,
+  .success {
+    margin-left: 20px;
+  }
+
+  .projectCountCard,
+  .projectCard {
+    margin: 10px;
+  }
+
+  .projectsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .projectsHeader h1 {
+    font-size: 36px;
+  }
+
+  .projectsHeader button {
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 2px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .icons {
+    display: hidden;
+    margin-right: 0;
+    margin-top: 5px;
+  }
+
+  .details,
+  .projectsSection {
+    width: 98%;
+    margin: 5px auto;
+  }
+
+  .mainImg {
+    width: 100%;
+    height: auto;
+  }
+
+  .buttonTag {
+    width: 170px;
+    height: 40px;
+    font-size: 18px;
+  }
+  .add{
+    width: 15px;
+    height: 15px;
+  }
+
+  .create{
+    font-size: 12px;
+  }
+
+  .modalOverlay {
+    padding: 5px;
+  }
+
+  .modalContent {
+    width: 98%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .modalContent input {
+    width: 80%;
+  }
+
+  .modalContent button {
+    width: 45%;
+    font-size: 14px;
+  }
+
+  .modalContent h1 {
+    font-size: 24px;
+    margin-left: 15px;
+  }
+
+  .modalContent label {
+    margin-left: 15px;
+    font-size: 16px;
+  }
+
+  .buttonDiv {
+    margin-right: 15px;
+  }
+
+  .error,
+  .success {
+    margin-left: 15px;
+  }
+
+  .projectCountCard,
+  .projectCard {
+    margin: 5px;
+  }
+
+  .projectsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .projectsHeader h1 {
+    font-size: 28px;
+  }
+
+  .projectsHeader button {
+    width: 100%;
+    height: 45px;
+    font-size: 18px;
+  }
+}

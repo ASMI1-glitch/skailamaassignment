@@ -1,0 +1,148 @@
+.left {
+  width: 250px;
+  height: 100vh;
+  gap: 50px;
+  padding: 55px;
+  color: black;
+  overflow-y: hidden;
+  /* background-color: #f8f9fa; */
+  /* background-color: red; */
+}
+.leftContainer {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.leftContent {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-left: 70px;
+}
+.leftData {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  gap: 20px;
+  color: gray;
+}
+.leftHelp {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 430px;
+}
+.leftIcon {
+  width: 187px;
+  height: 40px;
+}
+.leftIconsData {
+  width: 26px;
+  height: 26px;
+  margin-bottom: 10px;
+  color: gray;
+}
+.leftIconsImage {
+  width: 26px;
+  height: 26px;
+  margin-bottom: 10px;
+}
+.leftImageDiv {
+  margin-bottom: 20px;
+}
+.leftDownDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
+  margin-top: -50px;
+}
+.hrline {
+  width: 100%;
+}
+.headingHome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: -30px;
+}
+
+.settingContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.leftUserDetail {
+  width: 220px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  margin-top: -30px;
+}
+.name {
+  display: flex;
+  margin-top: -20px;
+}
+.email {
+  margin-top: -20px;
+}
+
+@media (max-width: 1200px) {
+  .left {
+    width: 220px;
+  }
+
+  .leftContent {
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .leftData {
+    gap: 15px;
+  }
+
+  .leftHelp {
+    margin-top: 430px;
+  }
+
+  .leftIcon {
+    width: 150px;
+    height: 35px;
+  }
+
+  .leftIconsData,
+  .leftIconsImage {
+    width: 22px;
+    height: 22px;
+  }
+
+  .leftDownDiv {
+    gap: 15px;
+  }
+
+  .settingContainer {
+    gap: 15px;
+  }
+
+  .leftUserDetail {
+    width: 180px;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .username,
+  .email {
+    margin-top: -10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .left {
+    display: none;
+  }
+}

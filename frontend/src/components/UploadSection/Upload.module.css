@@ -1,0 +1,26 @@
+/* .mainContainer {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  overflow-y: hidden;
+} */
+
+
+/* Upload.module.css */
+.mainContainer {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  overflow-y: hidden;
+}
+
+
+
+@media (max-width: 1400px) {
+  .mainContainer {
+   overflow-y: scroll;
+   overflow-x: hidden;
+  }
+}
