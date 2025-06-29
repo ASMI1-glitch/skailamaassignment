@@ -1,8 +1,9 @@
+// src/api.js or wherever you keep this file
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://skailamaassignment-rgnw.onrender.com",
-  withCredentials: true // include credentials if your backend needs cookies
+  baseURL: "http://localhost:5000", // ✅ Direct URL instead of using REACT_APP_API_URL
+  withCredentials: true
 });
 
 api.interceptors.request.use((config) => {
