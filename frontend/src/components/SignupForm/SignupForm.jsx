@@ -32,8 +32,9 @@ const SignupForm = () => {
     setIsLoading(true);
     try {
       const { data } = await axios.post(
-        'http://localhost:5000/api/register', // ✅ DIRECT URL used here
-        { email, password }
+        'https://skailamaassignment-rgnw.onrender.com/api/register', // ✅ UPDATED URL
+        { email, password },
+        { withCredentials: true } // Optional: include if cookies/session needed
       );
 
       localStorage.setItem('token', data.token);
