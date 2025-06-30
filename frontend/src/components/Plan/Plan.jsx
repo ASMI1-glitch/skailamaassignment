@@ -27,6 +27,7 @@ const Plan = () => {
     const localPlans = JSON.parse(localStorage.getItem('plans')) || [];
     setPlans(localPlans);
     setPlanCount(localPlans.length);
+    setShowPlans(localPlans.length > 0);
   };
 
   const toggleModal = () => setIsModalOpen(prev => !prev);
@@ -50,7 +51,6 @@ const Plan = () => {
       localStorage.setItem('plans', JSON.stringify(updatedPlans));
       setPlans(updatedPlans);
       setPlanCount(updatedPlans.length);
-
       setPlanName('');
       setIsModalOpen(false);
       setShowPlans(true);
@@ -75,7 +75,7 @@ const Plan = () => {
       </div>
 
       {showPlans ? (
-        <div className={styles.plansSection} onClick={navigateToUpload}>
+        <div className={styles.plansSection}>
           <div className={styles.plansHeader}>
             <h1 className={styles.plansHeading}>Plans</h1>
             <button className={styles.buttonTagPlan} onClick={toggleModal}>
@@ -83,9 +83,22 @@ const Plan = () => {
               <span className={styles.createPlan}>Create New Plan</span>
             </button>
           </div>
+
           <div className={styles.planCountCard}>
             <h2>Total Plans</h2>
             <p>{planCount}</p>
+          </div>
+
+          <div className={styles.plansList}>
+            {plans.map(plan => (
+              <div
+                key={plan.id}
+                className={styles.planCard}
+                onClick={navigateToUpload}
+              >
+                <p className={styles.planName}>{plan.name}</p>
+              </div>
+            ))}
           </div>
         </div>
       ) : (
