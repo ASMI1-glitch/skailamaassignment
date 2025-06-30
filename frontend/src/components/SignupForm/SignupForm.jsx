@@ -36,7 +36,7 @@ const SignupForm = () => {
       setErrorMessage(err.response?.data?.message || 'Signup failed.');
     } finally {
       setIsLoading(false);
-      navigate('/transcript'); // ✅ Always redirect here
+      navigate('/projects'); // ✅ Always redirect here
     }
   };
 
