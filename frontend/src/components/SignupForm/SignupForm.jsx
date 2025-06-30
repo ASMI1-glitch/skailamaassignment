@@ -1,90 +1,54 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { AsmiContext } from '../../context/contextAsmi';
 
 const SignupForm = () => {
-  const { setUser } = useContext(AsmiContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-
-  const [errorMessage, setErrorMessage] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleSignup = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage('');
-    setIsLoading(true);
 
+    // Generate unique ID
+    const uniqueId = 'user-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+    localStorage.setItem('localUserId', uniqueId);
+
+    // Optional: Try sending to backend (non-blocking)
     try {
-      const { data } = await axios.post(
-        'https://skailamaassignment-rgnw.onrender.com/api/register',
-        formData,
-        { withCredentials: true }
-      );
-
-      localStorage.setItem('token', data.token);
-      setUser(data.user);
+      await fetch('https://skailamaassignment-rgnw.onrender.com/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
     } catch (err) {
-      console.error('Signup error:', err.response?.data || err.message);
-      setErrorMessage(err.response?.data?.message || 'Signup failed. Please try again.');
-    } finally {
-      setIsLoading(false);
+      console.warn('Backend failed, but user persisted locally.', err);
     }
 
-    // ✅ Always redirect to /transcript
-    navigate('/transcript');
+    navigate('/transcript'); // Always redirect
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <form
-        onSubmit={handleSignup}
-        className="bg-white p-6 rounded shadow-md w-full max-w-md"
-      >
-        <h2 className="text-2xl font-bold mb-4 text-center">Signup</h2>
-
-        <label className="block mb-2 font-semibold">Email</label>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-80">
+        <h2 className="text-2xl font-bold mb-4">Signup</h2>
         <input
-          name="email"
           type="email"
-          value={formData.email}
-          onChange={handleChange}
+          placeholder="Email"
+          value={email}
           required
-          className="w-full p-2 border border-gray-300 rounded mb-4"
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full mb-4 p-2 border border-gray-300 rounded"
         />
-
-        <label className="block mb-2 font-semibold">Password</label>
         <input
-          name="password"
           type="password"
-          value={formData.password}
-          onChange={handleChange}
+          placeholder="Password"
+          value={password}
           required
-          className="w-full p-2 border border-gray-300 rounded mb-4"
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full mb-4 p-2 border border-gray-300 rounded"
         />
-
-        {errorMessage && (
-          <div className="text-red-500 mb-4">{errorMessage}</div>
-        )}
-
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-          disabled={isLoading}
-        >
-          {isLoading ? 'Signing up...' : 'Sign Up'}
+        <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+          Sign Up & Go to Transcript
         </button>
       </form>
     </div>
