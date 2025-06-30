@@ -14,17 +14,18 @@ import { AsmiProvider } from './context/contextAsmi';
 
 function App() {
   return (
-    <AsmiProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Hero />} />
-          <Route path="/signup" element={<SignupForm />} />
-          <Route path="/transcript" element={<TranscriptEditor />} />
-          <Route path="/projects" element={<Plan />} />
-          <Route path="/upload" element={<UploadSection />} />
-        </Routes>
-      </Router>
-    </AsmiProvider>
+   <AsmiProvider>
+  <Router>
+    <Routes>
+      <Route path="/" element={<Hero />} />
+      <Route path="/signup" element={<SignupForm />} />
+      <Route path="/transcript" element={<TranscriptEditor />} />
+      <Route path="/projects" element={<Plan />} />
+      <Route path="/upload" element={<UploadSection />} />
+    </Routes>
+  </Router>
+</AsmiProvider>
+
   );
 }
 
