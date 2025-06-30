@@ -6,7 +6,6 @@ import notificationIcon from '../../assets/notifications.png';
 import settingsIcon from '../../assets/setting.png';
 import plusIcon from '../../assets/plus.png';
 import groupImage from '../../assets/Group 16.png';
-import api from '../../config/api';
 import { useNavigate } from 'react-router-dom';
 
 const Plan = () => {
@@ -25,53 +24,44 @@ const Plan = () => {
     fetchPlans();
   }, []);
 
-  const fetchPlans = async () => {
-    try {
-      const response = await api.get('/projects/all');
-
-      setPlans(response.data);
-      setPlanCount(response.data.length);
-    } catch (error) {
-      console.error('Error fetching plans:', error);
-    }
+  const fetchPlans = () => {
+    const localPlans = JSON.parse(localStorage.getItem('plans')) || [];
+    setPlans(localPlans);
+    setPlanCount(localPlans.length);
   };
 
   const toggleModal = () => setIsModalOpen((prev) => !prev);
 
-const handleCreatePlan = async () => {
-  if (!planName.trim()) {
-    setErrorMessage('Plan name is required!');
-    return;
-  }
+  const handleCreatePlan = () => {
+    if (!planName.trim()) {
+      setErrorMessage('Plan name is required!');
+      return;
+    }
 
-  setIsLoading(true);
-  setErrorMessage('');
-  setSuccessMessage('');
+    setIsLoading(true);
+    setErrorMessage('');
+    setSuccessMessage('');
 
-  try {
-    await api.post('/projects/create', { name: planName });
+    setTimeout(() => {
+      const newPlan = {
+        id: Date.now(),
+        name: planName
+      };
 
-    // Always proceed as if successful
-    alert('Plan creation attempted. Proceeding...');
-    setSuccessMessage('Plan created (forced success)');
-    setPlanName('');
-    setIsModalOpen(false);
-    fetchPlans();
-    setIsListVisible(true);
-  } catch (err) {
-    console.warn('Create plan error (ignored):', err.response?.data || err.message);
-    
-    // Still proceed even on error
-    alert('Plan creation failed, but proceeding anyway');
-    setSuccessMessage('Plan created (even with backend error)');
-    setPlanName('');
-    setIsModalOpen(false);
-    fetchPlans();
-    setIsListVisible(true);
-  } finally {
-    setIsLoading(false);
-  }
-};
+      const updatedPlans = [...plans, newPlan];
+      localStorage.setItem('plans', JSON.stringify(updatedPlans));
+      setPlans(updatedPlans);
+      setPlanCount(updatedPlans.length);
+
+      alert('Plan created locally. Proceeding...');
+      setSuccessMessage('Plan created successfully');
+      setPlanName('');
+      setIsModalOpen(false);
+      setIsListVisible(true);
+      setIsLoading(false);
+    }, 500); // simulate loading
+  };
+
   const navigateToUpload = () => navigate('/upload');
 
   return (
