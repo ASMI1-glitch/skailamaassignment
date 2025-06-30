@@ -12,10 +12,7 @@ const port = process.env.PORT
 
 const app = express()
 
-app.use(cors({
-    origin: "https://skailamaassignment-r38l-9ruix26xf-asmi-prasads-projects.vercel.app",
-    credentials: true
-}));
+app.use(cors());
 
 app.use(express.json())
 
