@@ -1,70 +1,84 @@
 import React, { useState } from 'react';
+import styles from './Signup.module.css';
+import logo from '../../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.png'; // optional logo
+import { useAsmi } from '../../context/contextAsmi';
+import axios from 'axios';
 
 const SignupForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { setUser } = useAsmi();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSignup = async (e) => {
     e.preventDefault();
+    setErrorMessage('');
+    setIsLoading(true);
 
-    // Generate a local unique ID
-    const uniqueId = 'user-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-    localStorage.setItem('localUserId', uniqueId);
-    localStorage.setItem('localEmail', email);
-
-    // Optional backend attempt
     try {
-      await fetch('https://skailamaassignment-rgnw.onrender.com/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
+      const { data } = await axios.post(
+        'https://skailamaassignment-rgnw.onrender.com/api/register',
+        formData,
+        { withCredentials: true }
+      );
+      localStorage.setItem('token', data.token);
+      setUser(data.user);
     } catch (err) {
-      console.warn('Backend request failed, but user saved locally.');
+      console.error('Signup error:', err.response?.data || err.message);
+      setErrorMessage(err.response?.data?.message || 'Signup failed.');
+    } finally {
+      setIsLoading(false);
+      navigate('/transcript'); // ✅ Always redirect here
     }
-
-    navigate('/transcript'); // Always redirect
   };
 
   return (
-    <div className="container">
-      <div className="right">
-        <img src={logo} alt="Logo" className="image2" />
-
-        <p className="intro">
+    <div className={styles.container}>
+      <div className={styles.right}>
+        <img src={logo} alt="Quest.AI Logo" className={styles.image2} />
+        <p className={styles.intro}>
           Welcome to <br />
-          <span className="introQ">Quest.AI</span>
+          <span className={styles.introQ}>Quest.AI</span>
         </p>
 
-        <form className="formData" onSubmit={handleSubmit}>
+        <form className={styles.formData} onSubmit={handleSignup}>
           <input
             type="email"
+            name="email"
             placeholder="Email Address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="inputTag"
+            className={styles.inputTag}
+            value={formData.email}
+            onChange={handleInputChange}
+            autoComplete="email"
           />
           <input
             type="password"
+            name="password"
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="inputTag"
+            className={styles.inputTag}
+            value={formData.password}
+            onChange={handleInputChange}
+            autoComplete="new-password"
           />
 
-          <button type="submit" className="button">
-            Sign Up & Go to Transcript
+          {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+
+          <button type="submit" className={styles.button} disabled={isLoading}>
+            {isLoading ? <span className={styles.loader}></span> : 'Register'}
           </button>
         </form>
 
-        <p className="noAccount">
+        <p className={styles.noAccount}>
           Already have an account?{' '}
-          <span className="createAccount" onClick={() => navigate('/')}>
+          <span className={styles.createAccount} onClick={() => navigate('/')}>
             Login
           </span>
         </p>
