@@ -12,14 +12,11 @@ const port = process.env.PORT
 
 const app = express()
 
-app.use(cors(
-    {
-        origin: (origin, callback) => {
-            callback(null, origin); 
-          },
-          credentials: true
-      }
-))
+app.use(cors({
+    origin: "https://skailamaassignment-r38l-9ruix26xf-asmi-prasads-projects.vercel.app",
+    credentials: true
+}));
+
 app.use(express.json())
 
 app.use('/api',authRoutes)
