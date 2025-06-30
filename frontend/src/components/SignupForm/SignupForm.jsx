@@ -21,19 +21,12 @@ const SignupForm = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     setErrorMessage('');
-
-    const { email, password } = formData;
-
-    if (!email || !password) {
-      setErrorMessage('Please enter both email and password.');
-      return;
-    }
-
     setIsLoading(true);
+
     try {
       const { data } = await axios.post(
         'https://skailamaassignment-rgnw.onrender.com/api/register',
-        { email, password },
+        formData,
         { withCredentials: true }
       );
 
@@ -44,7 +37,7 @@ const SignupForm = () => {
       setErrorMessage(err.response?.data?.message || 'Signup failed. Please try again.');
     } finally {
       setIsLoading(false);
-      navigate('/'); // ✅ Redirect to homepage regardless of success/failure
+      navigate('/'); // 👈 Redirect happens regardless of success/failure
     }
   };
 
