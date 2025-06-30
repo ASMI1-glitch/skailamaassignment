@@ -16,9 +16,9 @@ app.use(cors());
 
 app.use(express.json())
 
-app.use('/',authRoutes)
-app.use("/projects", projectRoutes);
-app.use("/youtube", youtubeRoutes);
+app.use('/api',authRoutes)
+app.use("/api/projects", projectRoutes);
+app.use("/api/youtube", youtubeRoutes);
 
 app.listen(port || 8000,()=>{
     connect()
