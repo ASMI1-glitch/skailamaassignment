@@ -32,19 +32,19 @@ const SignupForm = () => {
     setIsLoading(true);
     try {
       const { data } = await axios.post(
-        'https://skailamaassignment-rgnw.onrender.com/api/register', // ✅ UPDATED URL
+        'https://skailamaassignment-rgnw.onrender.com/api/register',
         { email, password },
-        { withCredentials: true } // Optional: include if cookies/session needed
+        { withCredentials: true }
       );
 
       localStorage.setItem('token', data.token);
       setUser(data.user);
-      navigate('/');
     } catch (err) {
       console.error('Signup error:', err.response?.data || err.message);
       setErrorMessage(err.response?.data?.message || 'Signup failed. Please try again.');
     } finally {
       setIsLoading(false);
+      navigate('/'); // ✅ Redirect to homepage regardless of success/failure
     }
   };
 
