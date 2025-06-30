@@ -11,49 +11,50 @@ import iconProfile from "../../assets/profile.png";
 
 const SidebarNavigation = () => {
   return (
-    <div className={styles.sidebar}>
-      {/* Top Section */}
-      <div className={styles.sidebarTop}>
-        <div className={styles.logoContainer}>
-          <img src={logo} alt="Logo" className={styles.logo} />
+    <div className={styles.left}>
+      <div className={styles.leftContainer}>
+        <div className={styles.leftImageDiv}>
+          <img src={logo} alt="Logo" className={styles.leftIcon} />
         </div>
 
-        <div className={styles.menu}>
-          <div className={styles.menuItem}>
-            <img src={iconAdd} alt="Add Podcast" className={styles.icon} />
-            Add your Podcast(s)
+        <div className={styles.leftContent}>
+          <div className={styles.leftData}>
+            <img src={iconAdd} alt="Add Podcast" className={styles.leftIconsData} />
+            <p>Add your Podcast(s)</p>
           </div>
-          <div className={styles.menuItem}>
-            <img src={iconCreate} alt="Create" className={styles.icon} />
-            Create & Repurpose
+
+          <div className={styles.leftData}>
+            <img src={iconCreate} alt="Create" className={styles.leftIconsData} />
+            <p>Create & Repurpose</p>
           </div>
-          <div className={styles.menuItem}>
-            <img src={iconWidget} alt="Widget" className={styles.icon} />
-            Podcast Widget
+
+          <div className={styles.leftData}>
+            <img src={iconWidget} alt="Widget" className={styles.leftIconsData} />
+            <p>Podcast Widget</p>
           </div>
-          <div className={styles.menuItem}>
-            <img src={iconUpgrade} alt="Upgrade" className={styles.icon} />
-            Upgrade
+
+          <div className={styles.leftData}>
+            <img src={iconUpgrade} alt="Upgrade" className={styles.leftIconsData} />
+            <p>Upgrade</p>
           </div>
         </div>
-      </div>
 
-      <hr />
+        <hr className={styles.hrline} />
 
-      {/* Bottom Section */}
-      <div className={styles.sidebarBottom}>
-        <div className={styles.helpSection}>
-          <img src={iconSettings} alt="Settings" className={styles.icon} />
-          Help
-        </div>
+        <div className={styles.leftDownDiv}>
+          <div className={styles.leftHelp}>
+            <img src={iconSettings} alt="Settings" className={styles.leftIconsImage} />
+            <p>Help</p>
+          </div>
 
-        <hr className={styles.separator} />
+          <hr className={styles.hrline} />
 
-        <div className={styles.profileSection}>
-          <img src={iconProfile} alt="Profile" className={styles.profileImage} />
-          <div className={styles.profileInfo}>
-            <p className={styles.username}>UserName</p>
-            <p className={styles.email}>test@gmail.com</p>
+          <div className={styles.settingContainer}>
+            <img src={iconProfile} alt="Profile" className={styles.leftIconsImage} />
+            <div className={styles.leftUserDetail}>
+              <p className={styles.name}>UserName</p>
+              <p className={styles.email}>test@gmail.com</p>
+            </div>
           </div>
         </div>
       </div>
