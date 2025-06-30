@@ -21,7 +21,7 @@ function App() {
           <Route
             path="/signup"
             element={
-              hasLocalUser ? <Navigate to="/transcript" replace /> : <SignupForm />
+              hasLocalUser ? <Navigate to="/projects" replace /> : <SignupForm />
             }
           />
           <Route path="/transcript" element={<TranscriptEditor />} />
