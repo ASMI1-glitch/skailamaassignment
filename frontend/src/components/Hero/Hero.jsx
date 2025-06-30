@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./Hero.module.css";
@@ -19,8 +19,16 @@ const Hero = () => {
   const [loading, setLoading] = useState(false);
 
   const { setUser } = useAsmi();
-
   const navigate = useNavigate();
+
+  // 👇 Auto redirect to signup after 5 seconds
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      navigate("/signup");
+    }, 5000); // 5 seconds delay
+
+    return () => clearTimeout(timeout); // Clear on unmount
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -49,11 +57,7 @@ const Hero = () => {
       {/* Left Side */}
       <div className={styles.left}>
         <div className={styles.imageContainer}>
-          <img
-            src={maskedImage}
-            alt="Background Mask"
-            className={styles.maskedImage}
-          />
+          <img src={maskedImage} alt="Background Mask" className={styles.maskedImage} />
         </div>
         <div className={styles.data}>
           <img src={logoText} alt="Logo Text" className={styles.logo} />
@@ -113,11 +117,7 @@ const Hero = () => {
         </form>
 
         <div className={styles.googleDiv}>
-          <img
-            src={googleIcon}
-            alt="Continue with Google"
-            className={styles.googleImg}
-          />
+          <img src={googleIcon} alt="Continue with Google" className={styles.googleImg} />
           <p className={styles.googleName}>Continue with Google</p>
         </div>
 
