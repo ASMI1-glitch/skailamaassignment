@@ -1,3 +1,5 @@
+// File: src/pages/TranscriptEditor.jsx
+
 import React, { useState } from 'react';
 import styles from './Transcript.module.css';
 
@@ -14,7 +16,7 @@ const TranscriptEditor = () => {
   const navigate = useNavigate();
 
   const [originalTranscript, setOriginalTranscript] = useState([
-    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium..."
+    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam..."
   ]);
 
   const [editedTranscript, setEditedTranscript] = useState([...originalTranscript]);
@@ -37,7 +39,9 @@ const TranscriptEditor = () => {
     setIsEditing(false);
   };
 
-  const startEditing = () => setIsEditing(true);
+  const handleStartEditing = () => {
+    setIsEditing(true);
+  };
 
   const handleLogout = async () => {
     try {
@@ -51,13 +55,16 @@ const TranscriptEditor = () => {
     }
   };
 
-  const goBack = () => navigate('/upload');
+  const handleBack = () => {
+    navigate('/upload');
+  };
 
   return (
     <div className={styles.container}>
       <SidebarNavigation className={styles.leftSide} />
 
       <main className={styles.mainContent}>
+        {/* Top Navigation */}
         <header className={styles.headingHome}>
           <div className={styles.arrow}>
             <img src={homeIcon} alt="Home" className={styles.homeIcon} />
@@ -72,9 +79,10 @@ const TranscriptEditor = () => {
           </div>
         </header>
 
+        {/* Page Header */}
         <div className={styles.header}>
           <h2 className={styles.headerTitle}>
-            <img src={arrowIcon} alt="Back" className={styles.arrowIcon} onClick={goBack} />
+            <img src={arrowIcon} alt="Back" className={styles.arrowIcon} onClick={handleBack} />
             Edit Transcript
           </h2>
 
@@ -85,11 +93,12 @@ const TranscriptEditor = () => {
                 <button className={styles.saveButton} onClick={handleSaveTranscript}>Save</button>
               </>
             ) : (
-              <button className={styles.editButton} onClick={startEditing}>Edit</button>
+              <button className={styles.editButton} onClick={handleStartEditing}>Edit</button>
             )}
           </div>
         </div>
 
+        {/* Editable Transcript Section */}
         <section className={styles.transcriptContainer}>
           {editedTranscript.map((text, index) => (
             <div key={index} className={styles.transcriptItem}>
