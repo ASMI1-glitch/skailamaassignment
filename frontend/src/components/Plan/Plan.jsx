@@ -27,12 +27,7 @@ const Plan = () => {
 
   const fetchPlans = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await api.get('/api/projects/all', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await api.get('/api/projects/all');
       setPlans(response.data);
       setPlanCount(response.data.length);
     } catch (error) {
@@ -53,19 +48,9 @@ const Plan = () => {
     setSuccessMessage('');
 
     try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        setErrorMessage('Missing authentication. Please log in.');
-        return;
-      }
-
-      const response = await api.post(
-        '/api/projects/create',
-        { name: planName },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const response = await api.post('/api/projects/create', {
+        name: planName,
+      });
 
       if (response.status === 201 || response.status === 200) {
         alert('Plan created successfully');
