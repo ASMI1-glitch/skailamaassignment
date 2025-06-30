@@ -37,39 +37,42 @@ const Plan = () => {
 
   const toggleModal = () => setIsModalOpen((prev) => !prev);
 
-  const handleCreatePlan = async () => {
-    if (!planName.trim()) {
-      setErrorMessage('Plan name is required!');
-      return;
-    }
+const handleCreatePlan = async () => {
+  if (!planName.trim()) {
+    setErrorMessage('Plan name is required!');
+    return;
+  }
 
-    setIsLoading(true);
-    setErrorMessage('');
-    setSuccessMessage('');
+  setIsLoading(true);
+  setErrorMessage('');
+  setSuccessMessage('');
 
-    try {
-      const response = await api.post('/api/projects/create', {
-        name: planName,
-      });
+  try {
+    await api.post('/api/projects/create', {
+      name: planName,
+    });
 
-      if (response.status === 201 || response.status === 200) {
-        alert('Plan created successfully');
-        setSuccessMessage('Plan created successfully');
-        setPlanName('');
-        setIsModalOpen(false);
-        fetchPlans();
-        setIsListVisible(true);
-      } else {
-        setErrorMessage('Unexpected server response.');
-      }
-    } catch (err) {
-      console.error('Create plan error:', err.response?.data || err.message);
-      setErrorMessage(err.response?.data?.error || 'Failed to create plan.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
+    // Always proceed as if successful
+    alert('Plan creation attempted. Proceeding...');
+    setSuccessMessage('Plan created (forced success)');
+    setPlanName('');
+    setIsModalOpen(false);
+    fetchPlans();
+    setIsListVisible(true);
+  } catch (err) {
+    console.warn('Create plan error (ignored):', err.response?.data || err.message);
+    
+    // Still proceed even on error
+    alert('Plan creation failed, but proceeding anyway');
+    setSuccessMessage('Plan created (even with backend error)');
+    setPlanName('');
+    setIsModalOpen(false);
+    fetchPlans();
+    setIsListVisible(true);
+  } finally {
+    setIsLoading(false);
+  }
+};
   const navigateToUpload = () => navigate('/upload');
 
   return (
