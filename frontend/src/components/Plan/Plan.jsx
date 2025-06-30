@@ -12,11 +12,10 @@ const Plan = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [planName, setPlanName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [plans, setPlans] = useState([]);
   const [planCount, setPlanCount] = useState(0);
-  const [isListVisible, setIsListVisible] = useState(false);
+  const [showPlans, setShowPlans] = useState(false);
 
   const navigate = useNavigate();
 
@@ -30,7 +29,7 @@ const Plan = () => {
     setPlanCount(localPlans.length);
   };
 
-  const toggleModal = () => setIsModalOpen((prev) => !prev);
+  const toggleModal = () => setIsModalOpen(prev => !prev);
 
   const handleCreatePlan = () => {
     if (!planName.trim()) {
@@ -40,7 +39,6 @@ const Plan = () => {
 
     setIsLoading(true);
     setErrorMessage('');
-    setSuccessMessage('');
 
     setTimeout(() => {
       const newPlan = {
@@ -53,29 +51,31 @@ const Plan = () => {
       setPlans(updatedPlans);
       setPlanCount(updatedPlans.length);
 
-      alert('Plan created locally. Proceeding...');
-      setSuccessMessage('Plan created successfully');
       setPlanName('');
       setIsModalOpen(false);
-      setIsListVisible(true);
+      setShowPlans(true);
       setIsLoading(false);
-    }, 500); // simulate loading
+    }, 400);
   };
 
-  const navigateToUpload = () => navigate('/upload');
+  const navigateToUpload = () => {
+    navigate('/upload');
+  };
 
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <img src={logo} alt="Logo" className={styles.logo} />
+      <div className={styles.header}>
+        <div>
+          <img src={logo} alt="Logo" className={styles.logo} />
+        </div>
         <div className={styles.icons}>
           <img src={settingsIcon} alt="Settings" className={styles.icon} />
           <img src={notificationIcon} alt="Notifications" className={styles.icon} />
         </div>
-      </header>
+      </div>
 
-      {isListVisible ? (
-        <section className={styles.plansSection} onClick={navigateToUpload}>
+      {showPlans ? (
+        <div className={styles.plansSection} onClick={navigateToUpload}>
           <div className={styles.plansHeader}>
             <h1 className={styles.plansHeading}>Plans</h1>
             <button className={styles.buttonTagPlan} onClick={toggleModal}>
@@ -83,24 +83,24 @@ const Plan = () => {
               <span className={styles.createPlan}>Create New Plan</span>
             </button>
           </div>
-
           <div className={styles.planCountCard}>
             <h2>Total Plans</h2>
             <p>{planCount}</p>
           </div>
-        </section>
+        </div>
       ) : (
-        <section className={styles.details}>
+        <div className={styles.details}>
           <h1 className={styles.heading}>Create a New Plan</h1>
-          <img src={groupImage} alt="Visual" className={styles.mainImg} />
+          <img src={groupImage} alt="Group" className={styles.mainImg} />
           <p className={styles.description}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae impedit quibusdam quisquam quidem, excepturi deserunt maiores nostrum odio aspernatur veniam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae impedit quibusdam
+            quisquam quidem, excepturi deserunt maiores nostrum odio aspernatur veniam.
           </p>
           <button className={styles.buttonTag} onClick={toggleModal}>
             <img src={plusIcon} alt="Add" className={styles.add} />
-            <span className={styles.create}>Create New Plan</span>
+            <p className={styles.create}>Create New Plan</p>
           </button>
-        </section>
+        </div>
       )}
 
       {isModalOpen && (
@@ -117,11 +117,16 @@ const Plan = () => {
                 className={styles.inputModal}
               />
               {errorMessage && <p className={styles.error}>{errorMessage}</p>}
-              {successMessage && <p className={styles.success}>{successMessage}</p>}
             </div>
             <div className={styles.buttonGroup}>
-              <button onClick={toggleModal} className={styles.modalCancel}>Cancel</button>
-              <button onClick={handleCreatePlan} disabled={isLoading} className={styles.createButton}>
+              <button onClick={toggleModal} className={styles.modalCancel}>
+                Cancel
+              </button>
+              <button
+                onClick={handleCreatePlan}
+                disabled={isLoading}
+                className={styles.createButton}
+              >
                 {isLoading ? <span className={styles.loader}></span> : 'Create'}
               </button>
             </div>
