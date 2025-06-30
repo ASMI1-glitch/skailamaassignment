@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
-import styles from './Signup.module.css';
-import logo from '../../assets/logo.png';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAsmi } from '../../context/contextAsmi';
 import axios from 'axios';
+import { AsmiContext } from '../../context/contextAsmi';
 
 const SignupForm = () => {
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const { setUser } = useContext(AsmiContext);
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const { setUser } = useAsmi();
-  const navigate = useNavigate();
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSignup = async (e) => {
@@ -37,54 +41,52 @@ const SignupForm = () => {
       setErrorMessage(err.response?.data?.message || 'Signup failed. Please try again.');
     } finally {
       setIsLoading(false);
-      navigate('/'); // 👈 Redirect happens regardless of success/failure
     }
+
+    // ✅ Always redirect to /transcript
+    navigate('/transcript');
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.right}>
-        <img src={logo} alt="Quest.AI Logo" className={styles.image2} />
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <form
+        onSubmit={handleSignup}
+        className="bg-white p-6 rounded shadow-md w-full max-w-md"
+      >
+        <h2 className="text-2xl font-bold mb-4 text-center">Signup</h2>
 
-        <p className={styles.intro}>
-          Welcome to <br />
-          <span className={styles.introQ}>Quest.AI</span>
-        </p>
+        <label className="block mb-2 font-semibold">Email</label>
+        <input
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mb-4"
+        />
 
-        <form className={styles.formData} onSubmit={handleSignup}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            className={styles.inputTag}
-            value={formData.email}
-            onChange={handleInputChange}
-            autoComplete="email"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className={styles.inputTag}
-            value={formData.password}
-            onChange={handleInputChange}
-            autoComplete="new-password"
-          />
+        <label className="block mb-2 font-semibold">Password</label>
+        <input
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded mb-4"
+        />
 
-          {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+        {errorMessage && (
+          <div className="text-red-500 mb-4">{errorMessage}</div>
+        )}
 
-          <button type="submit" className={styles.button} disabled={isLoading}>
-            {isLoading ? <span className={styles.loader}></span> : 'Register'}
-          </button>
-        </form>
-
-        <p className={styles.noAccount}>
-          Already have an account?{' '}
-          <span className={styles.createAccount} onClick={() => navigate('/')}>
-            Login
-          </span>
-        </p>
-      </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          disabled={isLoading}
+        >
+          {isLoading ? 'Signing up...' : 'Sign Up'}
+        </button>
+      </form>
     </div>
   );
 };
