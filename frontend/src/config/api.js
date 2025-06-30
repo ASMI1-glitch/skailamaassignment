@@ -1,8 +1,9 @@
+// api.js
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://skailamaassignment-rgnw.onrender.com", // use your live backend URL
-  withCredentials: true // include credentials if backend uses cookies/sessions
+  baseURL: "https://skailamaassignment-rgnw.onrender.com", // ✅ make sure this is correct
+  withCredentials: true, // optional
 });
 
 api.interceptors.request.use((config) => {
