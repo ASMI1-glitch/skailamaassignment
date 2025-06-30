@@ -27,7 +27,8 @@ const Plan = () => {
 
   const fetchPlans = async () => {
     try {
-      const response = await api.get('/api/projects/all');
+      const response = await api.get('/projects/all');
+
       setPlans(response.data);
       setPlanCount(response.data.length);
     } catch (error) {
@@ -48,9 +49,7 @@ const handleCreatePlan = async () => {
   setSuccessMessage('');
 
   try {
-    await api.post('/api/projects/create', {
-      name: planName,
-    });
+    await api.post('/projects/create', { name: planName });
 
     // Always proceed as if successful
     alert('Plan creation attempted. Proceeding...');
