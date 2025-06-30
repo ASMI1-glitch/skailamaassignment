@@ -1,31 +1,35 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-// Component imports
 import Hero from './components/Hero/Hero';
 import Plan from './components/Plan/Plan';
 import UploadSection from './components/UploadSection/UploadSection';
 import SignupForm from './components/SignupForm/SignupForm';
 import TranscriptEditor from './components/TranscriptEditor/TranscriptEditor';
 
-// Context
 import { AsmiProvider } from './context/contextAsmi';
 
 function App() {
-  return (
-   <AsmiProvider>
-  <Router>
-    <Routes>
-      <Route path="/" element={<Hero />} />
-      <Route path="/signup" element={<SignupForm />} />
-      <Route path="/transcript" element={<TranscriptEditor />} />
-      <Route path="/projects" element={<Plan />} />
-      <Route path="/upload" element={<UploadSection />} />
-    </Routes>
-  </Router>
-</AsmiProvider>
+  const hasLocalUser = localStorage.getItem('localUserId');
 
+  return (
+    <AsmiProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route
+            path="/signup"
+            element={
+              hasLocalUser ? <Navigate to="/transcript" replace /> : <SignupForm />
+            }
+          />
+          <Route path="/transcript" element={<TranscriptEditor />} />
+          <Route path="/projects" element={<Plan />} />
+          <Route path="/upload" element={<UploadSection />} />
+        </Routes>
+      </Router>
+    </AsmiProvider>
   );
 }
 
